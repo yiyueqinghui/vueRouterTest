@@ -1,6 +1,7 @@
 <template>
 	<div id="echarts">
 		<p>注意事项：要想实现这种地图形式，必须引入地图 import 'echarts/map/js/china.js'</p>
+		<p>echarts4 参考手册   https://echarts.apache.org/zh/cheat-sheet.html</p>
 		<div class="box" ref="container"></div>
 	</div>
 </template>
@@ -257,123 +258,6 @@
 				}]
 			];
 
-			var SHData = [
-				[{
-					name: '九江'
-				}, {
-					name: '九江',
-					value: 200
-				}],
-
-				[{
-					name: '九江'
-				}, {
-					name: '长沙',
-					value: 95
-				}],
-				[{
-					name: '九江'
-				}, {
-					name: '武汉',
-					value: 30
-				}],
-				[{
-					name: '九江'
-				}, {
-					name: '南昌',
-					value: 20
-				}],
-				[{
-					name: '九江'
-				}, {
-					name: '合肥',
-					value: 70
-				}],
-				[{
-					name: '九江'
-				}, {
-					name: '南京',
-					value: 60
-				}],
-				[{
-					name: '九江'
-				}, {
-					name: '福州',
-					value: 50
-				}],
-				[{
-					name: '九江'
-				}, {
-					name: '上海',
-					value: 100
-				}],
-				[{
-					name: '九江'
-				}, {
-					name: '深圳',
-					value: 100
-				}],
-
-			];
-
-			var GZData = [
-				[{
-					name: '新疆玛纳斯基地'
-				}, {
-					name: '新疆玛纳斯基地',
-					value: 200
-				}],
-				[{
-					name: '新疆玛纳斯基地'
-				}, {
-					name: '  ',
-					value: 90
-				}],
-				[{
-					name: '新疆玛纳斯基地'
-				}, {
-					name: ' ',
-					value: 40
-				}],
-				[{
-					name: '新疆玛纳斯基地'
-				}, {
-					name: '呼和浩特',
-					value: 90
-				}],
-				[{
-					name: '新疆玛纳斯基地'
-				}, {
-					name: '昆明',
-					value: 40
-				}],
-				[{
-					name: '新疆玛纳斯基地'
-				}, {
-					name: '成都',
-					value: 10
-				}],
-				[{
-					name: '新疆玛纳斯基地'
-				}, {
-					name: '兰州',
-					value: 95
-				}],
-				[{
-					name: '新疆玛纳斯基地'
-				}, {
-					name: '银川',
-					value: 90
-				}],
-				[{
-					name: '新疆玛纳斯基地'
-				}, {
-					name: '西宁',
-					value: 80
-				}],
-
-			];
-
 			var planePath = 'path://M.6,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705';
 
 			var convertData = function(data) {
@@ -397,12 +281,10 @@
 			var series = [];
 			[
 				['新乡', BJData],
-				['九江', SHData],
-				['新疆', GZData]
 			].forEach(function(item, i) {
 				series.push({
 					name: item[0] + ' Top10',
-					type: 'lines',
+					type: 'lines',         //移动动画
 					zlevel: 1,
 					effect: {
 						show: true,
@@ -421,7 +303,7 @@
 					data: convertData(item[1])
 				}, {
 					name: item[0] + ' Top10',
-					type: 'lines',
+					type: 'lines',         //轨迹
 					zlevel: 2,
 					effect: {
 						show: true,
@@ -441,7 +323,7 @@
 					data: convertData(item[1])
 				}, {
 					name: item[0] + ' Top10',
-					type: 'effectScatter',
+					type: 'effectScatter',          //点波纹特效
 					coordinateSystem: 'geo',
 					zlevel: 2,
 					rippleEffect: {
@@ -449,14 +331,22 @@
 					},
 					label: {
 						normal: {
-							show: true,
-							position: 'right',
-							formatter: '{b}'
+							show:true,
+							position: 'inside',
+							formatter:function(params){
+								let val = params['data']['value'][2];
+								return val;
+							},
+							fontSize:15,
+							fontFamily: 'serif',
+							align:'center',
+							verticalAlign:'middle'
 						}
 					},
-					symbolSize: function(val) {
-						return val[2] / 8;
-					},
+//					symbolSize: function(val) {
+//						return val[2] / 8;
+//					},
+                    symbolSize:20,
 					itemStyle: {
 						normal: {
 							color: color[i]
@@ -470,13 +360,14 @@
 					})
 				});
 			});
+			console.log(series);
 
 			this.option = {
 				backgroundColor: '#080a20',
 				title: {
-					text: '模拟迁徙',
-					subtext: '数据纯属虚构',
-					left: 'left',
+					text: '迁徙图',
+//					subtext: '数据纯属虚构',
+					left: 'center',
 					textStyle: {
 						color: '#fff'
 					}
