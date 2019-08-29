@@ -20,15 +20,16 @@
 			        zoom: 13
 			    });
 			    
-			        //地图类型切换
+			    //地图类型切换
 			    var type= new AMap.MapType({
-			       defaultType:1,    //使用2D地图
+			       defaultType:0,    //1  使用2D地图  0 常规图层
 			       showRoad:true
 			    });
 			    map.addControl(type);
 //			    type.hide();
 
 
+                //指定地区的边界
                 var disProvince = new AMap.DistrictLayer.Province({
 				    zIndex:12,
 				    adcode:['110000'],
@@ -41,6 +42,16 @@
 				    }
 				})
                 disProvince.setMap(map);
+                
+                //新增wms图层
+                //注意：demo这个图层是北美洲图层，所以需要看效果时，需要移动到北美去看
+                var wms = new AMap.TileLayer.WMS({
+                	url: 'https://ahocevar.com/geoserver/wms',   
+                	blend: false, // 地图级别切换时，不同级别的图片是否进行混合 
+                	tileSize: 512, // 加载WMS图层服务时，图片的分片大小 
+                	params: { 'LAYERS': 'topp:states', VERSION:'1.3.0' } // OGC标准的WMS地图服务的GetMap接口的参数 
+                }); 
+                map.add(wms);
 			    
 			    //实时路况图层
 			    /*

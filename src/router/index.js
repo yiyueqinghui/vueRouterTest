@@ -5,8 +5,11 @@ import CellMerge from '@/pages/cellMerge'
 import Parent from '@/pages/parent'
 import EchartDemo from '@/pages/echarts'
 import GdMap from '@/pages/gdmap'
+import Talk from '@/pages/componentTalk'
+import Common from '@/pages/common'
 import FirstSon from '@/components/son1'
 import SecondSon from '@/components/son2'
+import RollTab from '@/components/rollTab'
 
 
 Vue.use(Router)
@@ -46,6 +49,20 @@ export default new Router({
     {
     	path:'/map',
     	component:GdMap
+    },
+    {
+    	path:'/vue',
+    	component:Talk
+    },
+    {
+    	path:'/common',
+    	component:Common,
+    	children:[
+    	  {
+    	  	path:'',
+    	  	component:RollTab
+    	  }
+    	]
     }
   ]
 })
