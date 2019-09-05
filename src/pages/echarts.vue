@@ -16,7 +16,7 @@
 	export default {
 		data() {
 			return {
-				all_echarts:['Pie','QianXi','Bar','LiQuidFill'],
+				all_echarts:['Pie','QianXi','Bar','LiQuidFill','Map'],
 				component_name:'LiQuidFill'
 
 			}
@@ -34,9 +34,10 @@
 			'Pie':()=>import('../components/echarts/pie'),
 			'QianXi':()=>import('../components/echarts/qianxi02'),
 			'LiQuidFill':()=>import('../components/echarts/liquidFill'),
-			'Bar':()=>import('../components/echarts/bar')
+			'Bar':()=>import('../components/echarts/bar'),
+			'Map':()=>import('../components/echarts/map')
 		},
-		mounted() {
+		mounted(){
 			this.$nextTick(() => {
                this.init();
 			})
