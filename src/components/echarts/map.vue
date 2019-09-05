@@ -1,6 +1,7 @@
 <template>
-	<div id="echarts" ref="container">
-
+	<div>
+	   <p>geoJSON获取地址   <a :href="href">跳转地址</a></p>
+       <div id="echarts" ref="container"></div>
 	</div>
 </template>
 
@@ -9,6 +10,7 @@
 	export default {
 		data() {
 			return {
+				href:' http://datav.aliyun.com/tools/atlas/#&lat=33.521903996156105&lng=104.29849999999999&zoom=4',
 				option: {}
 
 			}
