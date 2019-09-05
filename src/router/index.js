@@ -7,6 +7,7 @@ import EchartDemo from '@/pages/echarts'
 import GdMap from '@/pages/gdmap'
 import Talk from '@/pages/componentTalk'
 import Common from '@/pages/common'
+import ArcGis from '@/pages/arcgis'
 import FirstSon from '@/components/son1'
 import SecondSon from '@/components/son2'
 import RollTab from '@/components/rollTab'
@@ -63,6 +64,10 @@ export default new Router({
     	  	component:RollTab
     	  }
     	]
+    },
+    {
+    	path:'/arcgis',
+    	component:ArcGis
     }
   ]
 })

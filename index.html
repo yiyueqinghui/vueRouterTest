@@ -4,11 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>vue-router-test-params</title>
+    <!--jquery-->
     <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=677393a8799ac0ac879b1fb4ebdc1ba0&plugin=AMap.MapType,AMap.DistrictLayer"></script> 
+    <!--高德地图-->
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=677393a8799ac0ac879b1fb4ebdc1ba0&plugin=AMap.MapType,AMap.DistrictLayer"></script>
+    <!--ArcGIS地图
+     <link rel="stylesheet" href="https://js.arcgis.com/3.29/esri/css/esri.css">
+     <script type="text/javascript" src="./static/js/arcgis/init.js"></script>-->
+    
+    
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
+  <!--<script type="text/javascript">
+        var dojoConfig = {
+            async: false, //是否异步
+            parseOnLoad: true,
+            packages: [{ //解释：require(["js/.."],function(){}) 中  js/ 即为 location的值
+                name: "js", //对应require引用包里的js
+                location: location.pathname.replace(/\/[^/]*$/, '') + '/static/js' //对应的路径
+            }]
+        };
+    </script>-->
 </html>

@@ -36,6 +36,10 @@
 		   	    {
 		   	    	url:'/common',
 		   	    	name:'vue常用组件'
+		   	    },
+		   	    {
+		   	    	url:'/arcgis',
+		   	    	name:'ArcGIS地图'
 		   	    }
 		   	 ]
 		   	 
