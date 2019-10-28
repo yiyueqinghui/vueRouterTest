@@ -22,35 +22,6 @@
 			init() {
 				let me = this;
 
-				var scatterData = [
-          {
-            "name": "太原市",
-            "value": [
-              112.48699,
-              37.94036,
-              100
-            ]
-          },
-          {
-            "name": "晋中市",
-            "value": [
-              112.70746,
-              37.69978,
-              100
-            ]
-          }
-
-        ];
-        var fireData = [
-          {
-            "name": "太原市",
-            "value": [
-              112.48699,
-              37.94036,
-              100
-            ]
-          }
-        ];
         var barData = [
           {
             "name": "太原市",
@@ -97,54 +68,34 @@
             postEffect: {
               enable: false
             },
+            //显示地名
+            label: {
+              show:true,
+              formatter:function(params){
+                var content='',
+                  content=params.name;
+                return content;
+              },
+              textStyle:{
+                color:'#EECBAD',
+                fontWeight : 'normal',
+                fontSize :12,
+                backgroundColor: 'rgba(0,23,11,0)'
+              },
+              normal: {
+                  show: true,//显示省份标签
+                  textStyle:{color:"#f00"}//省份标签字体颜色
+              },
+            },
             itemStyle: {
               borderColor: 'rgb(62,215,213)',
               borderWidth: 1
-            }
+            },
+
 
           },
-          series: [{
-            type: 'scatter3D',
-            coordinateSystem: 'geo3D',
-            data: scatterData,
-            symbol: 'circle',
-            symbolSize: 10,
-            itemStyle: {
-              color: 'purple',
-              borderColor: '#fff',
-              borderWidth: 1
-            },
-            label: {
-              show: true,
-              formatter: '{b}',
-              position: 'bottom',
-              textStyle: {
-                color: '#000',
-                backgroundColor: '#fff',
-              }
-            }
-          },
-            {
-              type: 'scatter3D',
-              coordinateSystem: 'geo3D',
-              data: fireData,
-              symbol: 'pin',
-              symbolSize: 30,
-              itemStyle: {
-                color: 'red',
-                borderColor: '#fff',
-                borderWidth: 1
-              },
-              label: {
-                show: false,
-                formatter: '{b}',
-                position: 'right',
-                textStyle: {
-                  color: '#000',
-                  backgroundColor: '#fff',
-                }
-              }
-            },
+
+          series: [
             {
               type: 'bar3D',
               coordinateSystem: 'geo3D',
