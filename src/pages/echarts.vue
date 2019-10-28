@@ -5,7 +5,7 @@
           	{{item}}
           </dd>
        </dl>
-       <div>
+       <div style="height:100%;" >
           <component v-bind:is="component_name"></component>
        </div>
 
@@ -16,8 +16,8 @@
 	export default {
 		data() {
 			return {
-				all_echarts:['Pie','QianXi','Bar','LiQuidFill','Map'],
-				component_name:'LiQuidFill'
+				all_echarts:['Pie','QianXi','Bar','LiQuidFill','Map','Map3D'],
+				component_name:'Map3D'
 
 			}
 		},
@@ -32,10 +32,11 @@
 		},
 		components:{
 			'Pie':()=>import('../components/echarts/pie'),
-			'QianXi':()=>import('../components/echarts/qianxi02'),
+      'QianXi':()=>import('../components/echarts/qianxi'),
 			'LiQuidFill':()=>import('../components/echarts/liquidFill'),
 			'Bar':()=>import('../components/echarts/bar'),
-			'Map':()=>import('../components/echarts/map')
+			'Map':()=>import('../components/echarts/map'),
+      'Map3D':()=>import('../components/echarts/map3d01'),
 		},
 		mounted(){
 			this.$nextTick(() => {
@@ -46,6 +47,10 @@
 </script>
 
 <style scoped>
+  #container{
+    width: 100%;
+    height: 100%;
+  }
 	.navs{
 		display: flex;
 		justify-content: flex-start;
