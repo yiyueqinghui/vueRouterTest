@@ -2,20 +2,20 @@
 	<div class="roll">
 		<h4>无限滚动表格</h4>
         <div style="height: 200px;" v-if="true">
-			<RollTab :tabList="tableData">
+			<RollTab :tabList="tableData" isOrder="2">
 				<el-table-column prop="date" label="日期" width="180"></el-table-column>
 				<el-table-column prop="name" label="姓名"></el-table-column>
 				<el-table-column prop="address" label="地址"></el-table-column>
 			</RollTab>
-		</div>	
-		
+		</div>
+
 		<div style="height: 400px;margin-top: 200px;">
 			<RollTab :tabList="tableData">
 				<el-table-column prop="date" label="日期" width="180"></el-table-column>
 				<el-table-column prop="name" label="姓名"></el-table-column>
 				<el-table-column prop="address" label="地址"></el-table-column>
 			</RollTab>
-		</div>	
+		</div>
 
 	</div>
 </template>
@@ -65,7 +65,7 @@
 
 		},
 		methods: {
-			
+
 		},
 		components:{
 			"RollTab":()=>import('@/components/rollList')
@@ -79,7 +79,7 @@
 					})
 					this.tableData = copy_arr;
 				},10000)
-				
+
 			})
 		}
 	}
@@ -89,7 +89,7 @@
 	.el-table__body-wrapper {
 		overflow-y: hidden!important;
 	}
-	
+
 	.el-table__body {
 		position: relative;
 	}

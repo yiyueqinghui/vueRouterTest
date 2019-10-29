@@ -37,38 +37,54 @@
 
         me.option = {
           title: {
-            text: '3D地图',
+            text: '山西省3D地图',
             left: 'center',
             top: 20
           },
+          legend:{
+            show:true,
+            right:10,
+            top:10
+          },
+          tooltip:{
+            show:true,
+            formatter:function(params){
+              let value = params.data.value;
+              return params.seriesName + ':'+ value[2];
+            }
+          },
           geo3D: {
             map: 'shanxi',
-            environment: '#ffffff',
+            boxWidth:50,
+            boxHeight:6,
+            boxDepth:90,
+            // environment: 'auto',
+            //鼠标旋转，缩放等视觉设置
             viewControl: {
-              center: [-10, 0, 10]
+              // center: [-10, 0, 10]
             },
+            //光源的设置
             light: {
               main: {
                 intensity: 1,
                 shadow: true,
-                alpha: 150,
+                alpha:150,
                 beta: 70
               },
               ambient: {
                 intensity: 0
-              },
-              ambientCubemap: {
-                diffuseIntensity: 1,
-                texture: '/asset/get/s/data-1491896094618-H1DmP-5px.hdr'
               }
             },
+            //地面的背景颜色
             groundPlane: {
-              show: true
+              show: true,
+              color:'transparent'
             },
+            //特效设置
             postEffect: {
-              enable: false
+              enable:false
             },
-            //显示地名
+            //标签样式
             label: {
               show:true,
               formatter:function(params){
@@ -76,21 +92,30 @@
                   content=params.name;
                 return content;
               },
+              distance:0,
               textStyle:{
-                color:'#EECBAD',
+                color:'#ffffff',
                 fontWeight : 'normal',
                 fontSize :12,
-                backgroundColor: 'rgba(0,23,11,0)'
-              },
-              normal: {
-                  show: true,//显示省份标签
-                  textStyle:{color:"#f00"}//省份标签字体颜色
+                backgroundColor: 'rgba(255,255,255,0)'
               },
             },
+            //地图样式 ===》地图各省市区的颜色，边界
             itemStyle: {
+              color:'#73a4ff',
               borderColor: 'rgb(62,215,213)',
               borderWidth: 1
             },
+            //鼠标 hover 高亮时图形和标签的样式
+            emphasis:{
+              label:{
+                show:true,
+                distance:10
+              },
+              itemStyle: {
+                color:'#ffa8cc',
+              }
+            }
 
 
           },
@@ -98,13 +123,17 @@
           series: [
             {
               type: 'bar3D',
+              name:'某某柱状图',
               coordinateSystem: 'geo3D',
-              bevelSize: 0,
               itemStyle: {
-                color: '#17e3ff',
+                color: 'red',
                 opacity: 1
               },
-              shading: 'lambert',
+              emphasis:{
+                label:{
+                  show:false,
+                }
+              },
               data: barData,
             }
           ]

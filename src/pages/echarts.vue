@@ -16,8 +16,8 @@
 	export default {
 		data() {
 			return {
-				all_echarts:['Pie','QianXi','Bar','LiQuidFill','Map','Map3D'],
-				component_name:'Map3D'
+				all_echarts:['Pie','QianXi','Bar','LiQuidFill','Map','Map3D','TimeLine'],
+				component_name:'TimeLine'
 
 			}
 		},
@@ -37,6 +37,7 @@
 			'Bar':()=>import('../components/echarts/bar'),
 			'Map':()=>import('../components/echarts/map'),
       'Map3D':()=>import('../components/echarts/map3d01'),
+      'TimeLine':()=>import('../components/echarts/timeline')
 		},
 		mounted(){
 			this.$nextTick(() => {
